@@ -1,24 +1,56 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column     | Type   | Options                   |
+| ---------- | ------ | ------------------------- |
+| email      | string | null: false, unique: true |
+| password   | string | null: false               |
+| nickname   | string | null: false               |
+| name       | string | null: false               |
+| birthday   | string | null: false               |
+## アソシエーション
+* has_many :items
+* has_many :buys
 
-* Ruby version
 
-* System dependencies
+## itemsテーブル
 
-* Configuration
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| item_name   | string     | null: false                    |
+| exp         | text       | null: false                    |
+| category    | string     | null: false                    |
+| status      | string     | null: false                    |
+| send_price  | string     | null: false                    |
+| send_area   | string     | null: false                    |
+| send_day    | string     | null: false                    |
+| price       | string     | null: false                    |
+| user        | references | null: false, foreign_key: true |
+## アソシエーション
+* has_one :buys
 
-* Database creation
 
-* Database initialization
+## buysテーブル
 
-* How to run the test suite
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| time       | string     | null: false                    |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
+## アソシエーション
+* belongs_to :items
+* has_one :addresses
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## addressesテーブル
 
-* ...
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| buyer_add  | text       | null: false                    |
+| post       | string     | null: false                    |
+| area       | string     | null: false                    |
+| tel        | string     | null: false                    |
+| buy        | references | null: false, foreign_key: true |
+## アソシエーション
+* belongs_to :buys
