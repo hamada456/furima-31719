@@ -32,7 +32,7 @@
 | user           | references | null: false, foreign_key: true |
 ## アソシエーション
 * has_one :buy
-* has_one :user
+* belongs_to :user
 
 
 ## buysテーブル
@@ -44,18 +44,19 @@
 ## アソシエーション
 * belongs_to :item
 * has_one :address
+* has_one :user
 
 
 ## addressesテーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| post        | string     | null: false                    |
-| add_area_id | integer    | null: false                    |
-| city        | text       | null: false                    |
-| block       | string     | null: false                    |
-| build       | text       |                                |
-| tel         | string     | null: false                    |
-| buy         | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| post         | string     | null: false                    |
+| send_area_id | integer    | null: false                    |
+| city         | string     | null: false                    |
+| block        | string     | null: false                    |
+| build        | string     |                                |
+| tel          | string     | null: false                    |
+| buy          | references | null: false, foreign_key: true |
 ## アソシエーション
 * belongs_to :buy

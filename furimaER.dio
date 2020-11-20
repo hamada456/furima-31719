@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2020-11-20T08:38:10.289Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" etag="Qlyetxz5_nQPoHb5meQf" version="13.6.5">
+<mxfile host="65bd71144e" modified="2020-11-20T09:45:24.127Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" etag="Q6XdKJ9sJ5xZ_qvKkEHm" version="13.6.5">
     <diagram id="GCCQ1g7kstQiCeplYqHg" name="ページ1">
         <mxGraphModel dx="706" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -91,7 +91,7 @@
                 <mxCell id="40" value="post" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="38" vertex="1">
                     <mxGeometry y="26" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" value="add_area" style="align=left;fillColor=none;strokeColor=none;verticalAlign=top;spacingLeft=4;spacingRight=4;" vertex="1" parent="38">
+                <mxCell id="67" value="send_area" style="align=left;fillColor=none;strokeColor=none;verticalAlign=top;spacingLeft=4;spacingRight=4;" vertex="1" parent="38">
                     <mxGeometry y="56" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="39" value="city" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="38" vertex="1">
