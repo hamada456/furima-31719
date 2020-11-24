@@ -53,6 +53,11 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it "メールアドレスは@を含む必要がある" do
+        #@user.email = "test@test"
+        #@user.valid?
+        #expect(@user.errors.full_messages).to include("メールアドレスは@を含む必要がある")
+      end
     end
   end
 end
