@@ -12,11 +12,6 @@ describe User do
       it 'nickname、email、password、password_confirmation、苗字名前とカナ、誕生日が存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it 'passwordが6文字以上であれば登録できる' do
-        @user.password = '00000a'
-        @user.password_confirmation = '00000a'
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録がうまくいかないとき' do
@@ -58,10 +53,20 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
-      it 'パスワードは半角英数字混合である' do
+      it 'passwordが全角では登録できないこと' do
+        @user.password = "ああああああ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it 'passwordが数字のみでは登録できないこと' do
+        @user.password = "111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+      it 'passwordが英語のみでは登録できないこと' do
         @user.password = "aaaaaa"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it 'ユーザー本名は、名字と名前それぞれが必須である' do
         @user.first_name = ""
@@ -88,7 +93,7 @@ describe User do
         expect(@user.errors.full_messages).to include("First name kana is invalid", "Last name kana is invalid")
       end
       it '生年月日が必須である' do
-        @user.birthday = "year"
+        @user.birthday = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
