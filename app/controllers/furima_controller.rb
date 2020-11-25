@@ -1,3 +1,2 @@
 class FurimaController < ApplicationController
-  
 end
