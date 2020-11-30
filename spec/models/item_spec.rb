@@ -6,9 +6,16 @@ require 'rails_helper'
 describe Item do
   before do
     @item = FactoryBot.build(:item)
+    @user = FactoryBot.build(:user)
   end
 
   describe '商品出品機能' do
+
+    context '全ての商品が登録できること' do
+      it "入力欄に正しく入力すれば商品が出品できる" do
+        expect(@item).to be_valid
+      end
+    end
 
     context '商品出品がうまくいかないとき' do
       it '商品画像が存在していないと保存できないこと' do
