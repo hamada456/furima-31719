@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "furima#index"
+  root to: "items#index"
+  #root to: 'articles#new'
+  resources :articles
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  #resources :furima, only: :index
+  resources :items, only: [:index, :new, :create]
 end
