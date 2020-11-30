@@ -49,51 +49,51 @@ describe User do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'メールアドレスは@を含む必要がある' do
-        @user.email = "testtest"
+        @user.email = 'testtest'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが全角では登録できないこと' do
-        @user.password = "ああああああ"
+        @user.password = 'ああああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordが数字のみでは登録できないこと' do
-        @user.password = "111111"
+        @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'passwordが英語のみでは登録できないこと' do
-        @user.password = "aaaaaa"
+        @user.password = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
       it 'ユーザー本名は、名字と名前それぞれが必須である' do
-        @user.first_name = ""
-        @user.last_name = ""
+        @user.first_name = ''
+        @user.last_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name can't be blank", "First name is invalid", "Last name can't be blank", "Last name is invalid")
+        expect(@user.errors.full_messages).to include("First name can't be blank", 'First name is invalid', "Last name can't be blank", 'Last name is invalid')
       end
       it 'ユーザー本名は、全角（漢字・ひらがな・カタカナ）で入力させる' do
-        @user.first_name = "taro"
-        @user.last_name = "taro"
+        @user.first_name = 'taro'
+        @user.last_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid", "Last name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid', 'Last name is invalid')
       end
       it 'ユーザー本名のフリガナは、名字と名前でそれぞれ必須である' do
-        @user.first_name_kana = ""
-        @user.last_name_kana = ""
+        @user.first_name_kana = ''
+        @user.last_name_kana = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana can't be blank", "First name kana is invalid", "Last name kana can't be blank", "Last name kana is invalid")
+        expect(@user.errors.full_messages).to include("First name kana can't be blank", 'First name kana is invalid', "Last name kana can't be blank", 'Last name kana is invalid')
       end
       it 'ユーザー本名のフリガナは、全角（カタカナ）で入力させる' do
-        @user.first_name_kana = "太郎"
-        @user.last_name_kana = "太郎"
+        @user.first_name_kana = '太郎'
+        @user.last_name_kana = '太郎'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana is invalid", "Last name kana is invalid")
+        expect(@user.errors.full_messages).to include('First name kana is invalid', 'Last name kana is invalid')
       end
       it '生年月日が必須である' do
-        @user.birthday = ""
+        @user.birthday = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Birthday can't be blank")
       end
