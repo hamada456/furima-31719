@@ -12,10 +12,10 @@ class Item < ApplicationRecord
     validates :image
     validates :item_name
     validates :exp
-    validates :price, numericality: { only_integer: true,greater_than: 300, less_than: 9999999}
+    validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999 }
   end
-  with_options numericality: { other_than: 0 , message: 'を選択してください' } do
-    validates :category_id    
+  with_options numericality: { other_than: 0, message: 'を選択してください' } do
+    validates :category_id
     validates :status_id
     validates :send_burden_id
     validates :send_area_id
