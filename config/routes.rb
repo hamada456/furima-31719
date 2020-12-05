@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   #root to: 'articles#new'
   resources :articles
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :items
+  resources :items do
+    resources :orders, only: [:create, :index]
+  end
 end
