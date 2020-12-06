@@ -3,11 +3,11 @@ class Furimaform# < ApplicationRecord
   attr_accessor :post,:send_area_id,:city,:block,:build,:tel,:item_id,:user_id,:token
 
   with_options presence: true do
-    validates :post
+    validates :post         , format: { with: /\d{3}-\d{4}/ }
     validates :send_area_id
     validates :city
     validates :block
-    validates :tel
+    validates :tel          , format: { with: /\A\d{10,11}\z/ }
     validates :token
   end
 
