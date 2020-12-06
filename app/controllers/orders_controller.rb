@@ -1,20 +1,21 @@
 class OrdersController < ApplicationController
   #before_action :authenticate_user!, except: [:create]
 
-
   def index
     @item = Item.find(params[:item_id])
     @furimaform = Furimaform.new
   end
-
-  #def new
-    #@address = Address.new
-  #end
  
   def create
-    #binding.pry
+    @item = Item.find(params[:item_id])
     @furimaform = Furimaform.new(order_params)
      if @furimaform.valid?
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: order_params[:token],
+        currency: 'jpy'
+      )
        @furimaform.save
        redirect_to root_path
      else
@@ -25,7 +26,6 @@ class OrdersController < ApplicationController
  
   private
   def order_params
-   params.require(:furimaform).permit(:post, :send_area_id, :city, :block, :build, :tel).merge(user_id: current_user.id,item_id: params[:item_id])
-   #params.require(:item_id).permit(:price)
+   params.require(:furimaform).permit(:post, :send_area_id, :city, :block, :build, :tel).merge(user_id: current_user.id,item_id: params[:item_id],token: params[:token])
   end
 end
