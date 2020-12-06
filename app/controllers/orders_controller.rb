@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
   #end
  
   def create
-    binding.pry
     @furimaform = Furimaform.new(order_params)
      if @furimaform.valid?
        @furimaform.save

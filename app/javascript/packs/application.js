@@ -4,9 +4,11 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
+
 //require("turbolinks").start()  //画面遷移は高速化しますが、
 //次ページのHTML要素だけを読み取って表示するため、
 //JavaScriptファイルが読み込まれず、JavaScriptにて設定したイベントが発火しないケースがあります。
+
 require("@rails/activestorage").start()
 require("channels")
 
@@ -19,3 +21,4 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 require("../fee_price");
+require("../card");
