@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   #end
  
   def create
+    #binding.pry
     @furimaform = Furimaform.new(order_params)
      if @furimaform.valid?
        @furimaform.save
@@ -25,5 +26,6 @@ class OrdersController < ApplicationController
   private
   def order_params
    params.require(:furimaform).permit(:post, :send_area_id, :city, :block, :build, :tel).merge(user_id: current_user.id,item_id: params[:item_id])
+   #params.require(:item_id).permit(:price)
   end
 end
