@@ -4,7 +4,7 @@ class Furimaform # < ApplicationRecord
 
   with_options presence: true do
     validates :post, format: { with: /\d{3}-\d{4}/ }
-    validates :send_area_id
+    validates :send_area_id , numericality: { other_than: 0 }
     validates :city
     validates :block
     validates :tel, format: { with: /\A\d{10,11}\z/ }
