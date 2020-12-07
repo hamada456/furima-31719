@@ -2,13 +2,12 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:create] # ログインしていないユーザーが直商品、ログインページへ
   before_action :redirect_item_user_method # 出品者が直接自分の商品購入ページに行かないようにする
   before_action :redirect_item_buy_method # 直接売却済みの商品購入ページに行かないようにする
+  before_action :set_order,only: [:index,:create]
   def index
-    @item = Item.find(params[:item_id])
     @furimaform = Furimaform.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @furimaform = Furimaform.new(order_params)
     if @furimaform.valid?
       Payjp.api_key = ENV['PAYJP_SECRET_KEY']
@@ -38,5 +37,9 @@ class OrdersController < ApplicationController
 
   def redirect_item_buy_method
     redirect_to root_path if @item.buy.present?
+  end
+
+  def set_order
+    @item = Item.find(params[:item_id])
   end
 end
