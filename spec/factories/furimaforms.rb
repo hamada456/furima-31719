@@ -5,7 +5,7 @@ FactoryBot.define do
     city         { 'a' }
     block        { 'a' }
     tel          { '09012345678' }
-    # association :buy
     token        { 'a01B' }
+    build        { 'aー１ビル'}
   end
 end

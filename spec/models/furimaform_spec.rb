@@ -13,9 +13,18 @@ describe Furimaform do
       it '入力欄に正しく入力すれば商品が購入できる' do
         expect(@furimaform).to be_valid
       end
+      it '建物が空でも購入できる' do
+        @furimaform.build = nil
+        expect(@furimaform).to be_valid
+      end
     end
 
     context '商品購入がうまくいかないとき' do
+      it '都道府県が--(0)だと購入できないこと' do
+        @furimaform.send_area_id = 0
+        @furimaform.valid?
+        expect(@furimaform.errors.full_messages).to include("Send area must be other than 0")
+      end
       it '都道府県が空だと購入できないこと' do
         @furimaform.send_area_id = nil
         @furimaform.valid?
