@@ -6,7 +6,6 @@ require 'rails_helper'
 describe Furimaform do
   before do
     @furimaform = FactoryBot.build(:furimaform)
-    
   end
 
   describe '商品購入機能' do
@@ -38,9 +37,9 @@ describe Furimaform do
         expect(@furimaform.errors.full_messages).to include("Post can't be blank")
       end
       it '郵便番号にハイフンを含んでいないと購入できないこと' do
-        @furimaform.post = 00000000
+        @furimaform.post = 0o0000000
         @furimaform.valid?
-        expect(@furimaform.errors.full_messages).to include("Post is invalid")
+        expect(@furimaform.errors.full_messages).to include('Post is invalid')
       end
       it '電話番号が空だと購入できないこと' do
         @furimaform.tel = nil
@@ -48,9 +47,9 @@ describe Furimaform do
         expect(@furimaform.errors.full_messages).to include("Tel can't be blank")
       end
       it '電話番号はハイフンは不要で、11桁以内であること' do
-        @furimaform.tel = "090-1234-5678"
+        @furimaform.tel = '090-1234-5678'
         @furimaform.valid?
-        expect(@furimaform.errors.full_messages).to include("Tel is invalid")
+        expect(@furimaform.errors.full_messages).to include('Tel is invalid')
       end
     end
   end
