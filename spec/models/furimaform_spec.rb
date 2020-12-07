@@ -51,6 +51,11 @@ describe Furimaform do
         @furimaform.valid?
         expect(@furimaform.errors.full_messages).to include('Tel is invalid')
       end
+      it 'tokenが空だと購入できないこと' do
+        @furimaform.token = nil
+        @furimaform.valid?
+        expect(@furimaform.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
