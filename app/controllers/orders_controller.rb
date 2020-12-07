@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:create]#ログインしていないユーザーが直商品、ログインページへ
   before_action :redirect_item_user_method#出品者が直接自分の商品購入ページに行かないようにする
-#直接売却済みの商品購入ページに行かないようにする
-
+  before_action :redirect_item_buy_method#直接売却済みの商品購入ページに行かないようにする
   def index
     @item = Item.find(params[:item_id])
     @furimaform = Furimaform.new
@@ -38,5 +37,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def redirect_item_buy_method
+    if @item.buy.present? 
+      redirect_to root_path
+    end
+  end
+  
 end
 
