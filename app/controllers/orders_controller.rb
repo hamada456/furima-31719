@@ -10,12 +10,9 @@ class OrdersController < ApplicationController
   def create
     @furimaform = Furimaform.new(order_params)
     if @furimaform.valid?
-      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: order_params[:token],
-        currency: 'jpy'
-      )
+
+      payjp_send
+      
       @furimaform.save
       redirect_to root_path
     else
@@ -42,4 +39,14 @@ class OrdersController < ApplicationController
   def set_order
     @item = Item.find(params[:item_id])
   end
+
+  def payjp_send
+  Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+      Payjp::Charge.create(
+        amount: @item.price,
+        card: order_params[:token],
+        currency: 'jpy'
+      )
+  end
+
 end
