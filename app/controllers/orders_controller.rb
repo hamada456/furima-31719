@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:create] # ログインしていないユーザーが直商品、ログインページへ
+  before_action :set_order,only: [:index,:create]
   before_action :redirect_item_user_method # 出品者が直接自分の商品購入ページに行かないようにする
   before_action :redirect_item_buy_method # 直接売却済みの商品購入ページに行かないようにする
-  before_action :set_order,only: [:index,:create]
   def index
     @furimaform = Furimaform.new
   end
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     if @furimaform.valid?
 
       payjp_send
-      
+
       @furimaform.save
       redirect_to root_path
     else
@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
   end
 
   def redirect_item_user_method
-    @item = Item.find(params[:item_id])
     redirect_to root_path if current_user.id == @item.user_id
   end
 

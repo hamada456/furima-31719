@@ -35,7 +35,7 @@
 <% end %>
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
-<% if @item.buy.blank? %>
+<% if @item.buy.blank? && user_signed_in? %>
 <% if current_user != @item.user %>
     <%= link_to '購入画面に進む',item_orders_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
