@@ -1,3 +1,6 @@
+
+#ER図は「furimaER.dio」
+
 # テーブル設計
 
 ## users テーブル
@@ -60,3 +63,8 @@
 | buy          | references | null: false, foreign_key: true |
 ## アソシエーション
 * belongs_to :buy
+
+
+概要：フリーマーケットのアプリケーションです、会員登録をすると商品の出品、購入、編集、削除が出来ます。
+
+URL:https://furima-31719.herokuapp.com/
