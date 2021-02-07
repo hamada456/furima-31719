@@ -1,10 +1,15 @@
+概要：フリーマーケットのアプリケーションです、会員登録をすると商品の出品、購入、編集、削除が出来ます。
+URL:https://furima-31719.herokuapp.com/
 
-#ER図は「furimaER.dio」
+#ER図は「furimaER.dio」にあります（Draw.io Integrationを使用しました）
+
+#RSpecでテストコードを書いてあります。
+
+#N+1問題が起こらないようにコードを記述してあります。
 
 # テーブル設計
 
 ## users テーブル
-
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | email              | string | null: false, unique: true |
@@ -19,9 +24,7 @@
 * has_many :items
 * has_many :buys
 
-
 ## itemsテーブル
-
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | item_name      | string     | null: false                    |
@@ -37,9 +40,7 @@
 * has_one :buy
 * belongs_to :user
 
-
 ## buysテーブル
-
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | user       | references | null: false, foreign_key: true |
@@ -49,9 +50,7 @@
 * has_one :address
 * belongs_to :user
 
-
 ## addressesテーブル
-
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | post         | string     | null: false                    |
@@ -63,8 +62,3 @@
 | buy          | references | null: false, foreign_key: true |
 ## アソシエーション
 * belongs_to :buy
-
-
-概要：フリーマーケットのアプリケーションです、会員登録をすると商品の出品、購入、編集、削除が出来ます。
-
-URL:https://furima-31719.herokuapp.com/
