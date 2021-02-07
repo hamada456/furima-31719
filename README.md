@@ -1,7 +1,7 @@
 概要：フリーマーケットのアプリケーションです、会員登録をすると商品の出品、購入、編集、削除が出来ます。</br>
 URL:https://furima-31719.herokuapp.com/
 
-#使用技術
+#使用技術</br>
 Ruby/Ruby on Rails/MySQL/RSpec/Github/Visual Studio Code/Javascript
 
 #ER図は「furimaER.dio」にあります（Draw.io Integrationを使用しました）
